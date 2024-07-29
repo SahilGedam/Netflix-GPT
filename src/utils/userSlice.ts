@@ -6,7 +6,7 @@ const userSLice = createSlice({
     addUser: (state, action) => {
       return action.payload;
     },
-    removeUser: (state, action) => {
+    removeUser: (state) => { // removed action from parameter , check if it disturbs
       return null;
     },
   },
