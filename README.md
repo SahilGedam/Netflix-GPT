@@ -8,3 +8,5 @@ use rafce to build components
 // deploy command - firebase deploy
 
 https://netflix-gpt-c8080.web.app
+
+using API from TMDB

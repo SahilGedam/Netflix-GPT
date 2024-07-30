@@ -10,9 +10,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BG_IMG, PHOTO_URL } from "../utils/constants";
 
 const Login = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: nameInp.current.value,
-            photoURL: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+            photoURL: PHOTO_URL,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -52,7 +53,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
+              // navigate("/browse");
               // Profile updated!
               // ...
             })
@@ -62,13 +63,14 @@ const Login = () => {
               // ...
             });
 
-          console.log(user);
+        
 
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+       
 
           // ..
         });
@@ -81,14 +83,15 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+        
+          // navigate("/browse");
 
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          
         });
     }
   }
@@ -97,11 +100,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src="
-            https://assets.nflxext.com/ffe/siteui/vlv3/21a8ba09-4a61-44f8-8e2e-70e949c00c6f/6678e2ea-85e8-4db2-b440-c36547313109/IN-en-20240722-POP_SIGNUP_TWO_WEEKS-perspective_WEB_3457a8b1-284d-4bb5-979e-2a2e9bb342b3_large.jpg"
-          alt="bg"
-        />
+        <img src={BG_IMG} alt="bg" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()} //prevent submit the form
